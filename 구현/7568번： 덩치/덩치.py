@@ -18,15 +18,30 @@ result_list={}
 num = int(input().rstrip())
 for i in range(num):
     inform=list(map(int,input().rstrip().split()))
-    member_list[i+1]=inform
-
-sorted_list=sorted(member_list.items(), key = lambda x:x[1][0],reverse=True)
-result=sorted(sorted_list, key = lambda x:x[1][1],reverse=True)
-print(result)
+    member_list[i]=inform
 
 for i in range(num):
-    member=result[i][0]
-    result_list[member]=i+1
+    member=member_list.get(i)
 
-for i in range(num):
-    print(result_list.get(i+1),end=" ")
+sorted_list1=sorted(member_list.items(), key = lambda x:x[1][0],reverse=True)
+sorted_list2=sorted(sorted_list1, key = lambda x:x[1][1],reverse=True)
+i=0
+while(i<num):
+    member1=sorted_list1[i][0]
+    member2=sorted_list2[i][0]
+    if(member1==member2):
+        result_list[member1]=i+1
+    else:
+        for j in range(num):
+            if(member1==sorted_list2[j]):
+                result_list[member1]=i+1
+
+    
+# for i in range(num):
+#     member=result[i][0]
+#     result_list[member]=i+1
+
+# for i in range(num):
+#     result
+# for i in range(num):
+#     print(result_list.get(i+1),end=" ")
